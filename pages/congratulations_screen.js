@@ -8,15 +8,18 @@ import { Carousel } from 'react-responsive-carousel';
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
 import Calendar from 'react-calendar'
-import Modal from "../pages/modal";
-import {useState} from "react";
+import ModalPopup from "../pages/modal";
+import { useState } from "react";
 
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-  const title="Sneha";
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
+
+    
     <div className={styles.container}>
+      
       <Head>
         <title>Lottery App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,7 +30,9 @@ export default function Home() {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       </Head>
 
-
+      <ModalPopup show={modalShow}
+  onHide={() => setModalShow(false)}>
+</ModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -101,32 +106,19 @@ export default function Home() {
           <div className={styles.calendar}>  <Calendar /></div>
           <div className={styles.calendar}>  <Calendar /></div>
         </div>
-        <div>
-          <div className={styles.calendar_btn_wrap}>
-            <div>
-            <button className={styles.calendar_btn} onClick={() => setShowModal(true)}>Save choices</button>
-            {showModal &&
-            <Modal onClose={() => setShowModal(false)} 
-            title={title}>
-                Hello from the modal!
-            </Modal>
-        }
-         </div>
-          </div>
+
+        <div className={styles.calendar_btn_wrap}>
+
+          <button className={styles.calendar_btn} variant="primary" onClick={() => setModalShow(true)}>Save choices</button>
+
+        
+
 
         </div>
 
+
+
       </div>
-
-
-
-
-
-
-
-
-
-
 
 
 

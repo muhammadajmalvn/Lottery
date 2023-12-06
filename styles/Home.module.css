@@ -1724,7 +1724,7 @@ cursor: pointer;
 }
 
 
-.modal {
+/* .modal {
   background: white;
   height:100%;
   width:100%;
@@ -1752,7 +1752,7 @@ cursor: pointer;
   display: flex;
   justify-content: flex-end;
   font-size: 25px;
-}
+} */
 @media (max-width: 600px) {
   .grid {
     width: 100%;
