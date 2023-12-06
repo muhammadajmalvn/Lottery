@@ -7,8 +7,32 @@ import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
+import { useBackend } from '../hooks/useBackend';
 
 export default function Home() {
+  const { rows: events } = useBackend("events/get-events", { sort: { sortOrder: "DESC", sortField: "id" } });
+  console.log(events,'88888888888');
+  // Assuming 'events' is an array of event objects
+  const filteredEvents = events?.filter((event) => {
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Parse the endDate from the event
+    const endDate = new Date(event.endDate);
+
+    // Calculate the difference in milliseconds between endDate and currentDate
+    const timeDifference = endDate - currentDate;
+
+    // Calculate the difference in hours
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+
+    // Return true if the endDate is less than 48 hours from now
+    return hoursDifference < 48;
+  });
+
+  // Now 'filteredEvents' contains only the events that meet the criteria
+  console.log(filteredEvents);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -34,12 +58,12 @@ export default function Home() {
       <div className={styles.main_nav}>
 
         <ul className={styles.nav_style}>
-        
 
-          <Link href="/draw"  className={styles.list_style}>
-          <li className={styles.list_style}>Draws
-          </li>
-      </Link>
+
+          <Link href="/draw" className={styles.list_style}>
+            <li className={styles.list_style}>Draws
+            </li>
+          </Link>
           <li className={styles.list_style}>How to Play</li>
           <li className={styles.list_style}>Events</li>
           <li className={styles.list_style}>Deals & Offers</li>
@@ -115,346 +139,239 @@ export default function Home() {
         </div>
 
 
+        {filteredEvents?.map((event) => {
+          return(
+          <Carousel>
+            <div className={styles.grid_style}>
 
-        <Carousel>
-          <div className={styles.grid_style}>
+              <div className={styles.flex_container1}>
+                <div className={styles.grid_box}>
 
-            <div className={styles.flex_container1}>
-              <div className={styles.grid_box}>
-
-                <img src='/1.png' className={`${styles.grid_banner}`} />
+                  <img src={event.imageUrl} className={`${styles.grid_banner}`} />
 
 
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
+                  </div>
+
+                  <label className={styles.lable_run}><span className={styles.lable_dhamakka}>{event.eventName}</span>
+                  </label>
+
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash & prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>{new Date(event.startDate).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric'})}-{new Date(event.endDate).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric'})}</label>
+                  </div>
+
+                  <div className={styles.button_wrap}>
+
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
+
+                  </div>
                 </div>
 
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
 
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
+                <div className={styles.grid_box}>
+                  <img src='/2.png' className={styles.grid_banner} />
 
-                <div className={styles.button_wrap}>
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
+                  </div>
 
-                </div>
-              </div>
+                  <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
+                  </label>
 
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
 
-              <div className={styles.grid_box}>
-                <img src='/2.png' className={styles.grid_banner} />
+                  <div className={styles.button_wrap}>
 
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
 
-                </div>
-
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
                 </div>
 
-                <div className={styles.button_wrap}>
 
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
+                <div className={styles.grid_box}>
+                  <img src='/3.png' className={styles.grid_banner} />
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
-                </div>
-              </div>
+                  </div>
 
+                  <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
+                  </label>
 
-              <div className={styles.grid_box}>
-                <img src='/3.png' className={styles.grid_banner} />
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
 
-                </div>
+                  <div className={styles.button_wrap}>
 
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
 
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
-
-                <div className={styles.button_wrap}>
-
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
-
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className={styles.grid_style}>
-
-            <div className={styles.flex_container1}>
-              <div className={styles.grid_box}>
-
-                <img src='/1.png' className={`${styles.grid_banner}`} />
-
-
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
-
+                  </div>
                 </div>
 
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
-
-                <div className={styles.button_wrap}>
-
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
-
-                </div>
-              </div>
-
-
-              <div className={styles.grid_box}>
-                <img src='/2.png' className={styles.grid_banner} />
-
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
-
-                </div>
-
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
-
-                <div className={styles.button_wrap}>
-
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
-
-                </div>
-              </div>
-
-
-              <div className={styles.grid_box}>
-                <img src='/3.png' className={styles.grid_banner} />
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
-
-                </div>
-
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
-
-                <div className={styles.button_wrap}>
-
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
-
-                </div>
               </div>
 
             </div>
 
-          </div>
-          <div className={styles.grid_style}>
 
-            <div className={styles.flex_container1}>
-              <div className={styles.grid_box}>
+            <div className={styles.grid_style}>
 
-                <img src='/1.png' className={`${styles.grid_banner}`} />
+              <div className={styles.flex_container1}>
+                <div className={styles.grid_box}>
+
+                  <img src='/1.png' className={`${styles.grid_banner}`} />
 
 
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
+                  </div>
+
+                  <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
+                  </label>
+
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
+
+                  <div className={styles.button_wrap}>
+
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
+
+                  </div>
                 </div>
 
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
 
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
+                <div className={styles.grid_box}>
+                  <img src='/2.png' className={styles.grid_banner} />
 
-                <div className={styles.button_wrap}>
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
+                  </div>
 
-                </div>
-              </div>
+                  <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
+                  </label>
 
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
 
-              <div className={styles.grid_box}>
-                <img src='/2.png' className={styles.grid_banner} />
+                  <div className={styles.button_wrap}>
 
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
 
-                </div>
-
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
                 </div>
 
-                <div className={styles.button_wrap}>
 
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
+                <div className={styles.grid_box}>
+                  <img src='/3.png' className={styles.grid_banner} />
+                  <div className={styles.flex_container3}>
+                    <div>0</div>
+                    <div>6</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>2</div>
+                    <div>8</div>
+                    <div className={styles.without_box}>:</div>
+                    <div>1</div>
+                    <div>9</div>
 
+                  </div>
+
+                  <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
+                  </label>
+
+                  <div className={styles.lable_wrap}>
+                    <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>$2000 </span>cash& prizes</label>
+                  </div>
+                  <div lassName={styles.flex_container3}>
+                    <img className={styles.img_calnder} src='/calender.png' />
+                    <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
+                  </div>
+
+                  <div className={styles.button_wrap}>
+
+                    <button className={styles.button_view}>View Details</button>
+                    <button className={styles.button_buynow}>Buy now</button>
+
+                  </div>
                 </div>
-              </div>
 
-
-              <div className={styles.grid_box}>
-                <img src='/3.png' className={styles.grid_banner} />
-                <div className={styles.flex_container3}>
-                  <div>0</div>
-                  <div>6</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>2</div>
-                  <div>8</div>
-                  <div className={styles.without_box}>:</div>
-                  <div>1</div>
-                  <div>9</div>
-
-                </div>
-
-                <label className={styles.lable_run}> RUN 4 <span className={styles.lable_dhamakka}>Dhamaka</span>
-                </label>
-
-                <div className={styles.lable_wrap}>
-                  <label className={styles.lable_cash}>Win up to <span className={styles.lable_pink}>₹2000 </span>cash& prizes</label>
-                </div>
-                <div lassName={styles.flex_container3}>
-                  <img className={styles.img_calnder} src='/calender.png' />
-                  <label className={styles.lable_cash}>04 Aug 2023-06 Aug 2023</label>
-                </div>
-
-                <div className={styles.button_wrap}>
-
-                  <button className={styles.button_view}>View Details</button>
-                  <button className={styles.button_buynow}>Buy now</button>
-
-                </div>
               </div>
 
             </div>
+          </Carousel>
+        )
+        })}
 
-          </div>
-        </Carousel>
 
-        
+
         {/* <div className={styles.box_wrap}>
 
           <div className={styles.win_box}>
@@ -462,121 +379,121 @@ export default function Home() {
           </div>
         </div> */}
 
-<div className={styles.play_wrap}>
-        <div className={styles.title_layout1}>
-          <label className={styles.label_main}>
-          How to  <span className={styles.banner_title_pink}>Play</span>
-          </label>
-          <p className={styles.second_lable}>
-           Pass through these 3 easy steps.
-          </p>
+        <div className={styles.play_wrap}>
+          <div className={styles.title_layout1}>
+            <label className={styles.label_main}>
+              How to  <span className={styles.banner_title_pink}>Play</span>
+            </label>
+            <p className={styles.second_lable}>
+              Pass through these 3 easy steps.
+            </p>
 
-    <img className={styles.play_img} src='/play.png'/>
+            <img className={styles.play_img} src='/play.png' />
 
-        </div>
+          </div>
         </div>
 
 
         <div className={styles.table_bg}>
 
-        <div className={styles.title_layout1}>
-          <label className={styles.label_main}>
-          Winners  <span className={styles.banner_title_pink}>History</span>
-          </label>
-          <p className={styles.second_lable}>
-          Here is the list of previous winners
-          </p>
-          <p className={styles.second_lable1}>
-          Note : Only winners from the last 3 months are listed
-          </p>
+          <div className={styles.title_layout1}>
+            <label className={styles.label_main}>
+              Winners  <span className={styles.banner_title_pink}>History</span>
+            </label>
+            <p className={styles.second_lable}>
+              Here is the list of previous winners
+            </p>
+            <p className={styles.second_lable1}>
+              Note : Only winners from the last 3 months are listed
+            </p>
 
 
 
 
-          <Table responsive>
-      <thead>
-        <tr>
-          <th>#</th>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>2</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>3</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-      </tbody>
-    </Table>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <th key={index}>Table heading</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td>3</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </Table>
 
-<footer className={styles.footer_wrap}>
-<div className={styles.footer_left}>
-Lorem ipsum dolor sit amet, 
-consectetur adipiscing elit, 
-sed do eiusmod tempor         
-</div>
-<div className={styles.footer_middle}>
-<input type="text" placeholder="Search.." className={styles.search}/>
-<img src='/arrow.png' className={styles.arrow_img}/>
-<div className={styles.footer_mid_sub}>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Company</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
-    
-    </div>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Terms</label>
-  <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
-  <div className={styles.footer_mid_sub_grid}>
-     <label className={styles.footer_mid_sub_grid_title}>Support</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
-    </div>
-</div>
-</div>
+            <footer className={styles.footer_wrap}>
+              <div className={styles.footer_left}>
+                Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit,
+                sed do eiusmod tempor
+              </div>
+              <div className={styles.footer_middle}>
+                <input type="text" placeholder="Search.." className={styles.search} />
+                <img src='/arrow.png' className={styles.arrow_img} />
+                <div className={styles.footer_mid_sub}>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Company</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
 
-<div className={styles.footer_right}>
-Follow us on
-<div className={styles.social_media_wrap}>
- 
-<img src='/s_1.png' className={styles.social_img}/>
-<img src='/s_2.png' className={styles.social_img}/>
-<img src='/s_3.png' className={styles.social_img}/>
-<img src='/s_5.png' className={styles.social_img}/>
-<img src='/s_6.png' className={styles.social_img}/>
+                  </div>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Terms</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Support</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
+                  </div>
+                </div>
+              </div>
 
-</div>
-</div>
+              <div className={styles.footer_right}>
+                Follow us on
+                <div className={styles.social_media_wrap}>
 
-</footer>
-        </div>
+                  <img src='/s_1.png' className={styles.social_img} />
+                  <img src='/s_2.png' className={styles.social_img} />
+                  <img src='/s_3.png' className={styles.social_img} />
+                  <img src='/s_5.png' className={styles.social_img} />
+                  <img src='/s_6.png' className={styles.social_img} />
+
+                </div>
+              </div>
+
+            </footer>
+          </div>
         </div>
 
       </div>
-      </div>
+    </div>
 
 
 
-    
+
 
   );
 

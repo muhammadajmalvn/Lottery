@@ -106,6 +106,8 @@
   list-style-type: none;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .main_nav {
