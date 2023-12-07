@@ -92,8 +92,11 @@ export default function Home() {
 
 
         <div className={styles.draw_run_wrap}>
-          <label>Draw  : Run 4(4 tickets)</label>
-          <label>Date  : 08 Nov 2023 - 15 Nov 2023</label>
+          <div> <label>Draw  : Run 4(4 tickets)</label></div>
+         <div>
+         <label>Date  : 08 Nov 2023 - 15 Nov 2023</label>
+         </div>
+         
         </div>
 
         <div className={styles.calendar_main_wrap}>
