@@ -17,9 +17,9 @@ export default function Home() {
 
   return (
 
-    
+
     <div className={styles.container}>
-      
+
       <Head>
         <title>Lottery App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -31,8 +31,8 @@ export default function Home() {
       </Head>
 
       <ModalPopup show={modalShow}
-  onHide={() => setModalShow(false)}>
-</ModalPopup>
+        onHide={() => setModalShow(false)}>
+      </ModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -96,35 +96,438 @@ export default function Home() {
           <label>Date  : 08 Nov 2023 - 15 Nov 2023</label>
         </div>
 
+        <div className={styles.calendar_main_wrap}>
+          <div className={styles.calendar_wrap}>
+            <div className={styles.calendar_title_wrap}>
+              <div>
+                <label className={styles.calendar_label}>Ticket 01</label>
+              </div>
 
-        <div className={styles.calendar_wrap}>
-          <div className={styles.calendar}>
-            <Calendar /></div>
-          <div className={styles.calendar}>  <Calendar /></div>
+              <div className={styles.circle1}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+              </div>
+
+            </div>
+            <div className={styles.calendar}>
+              <div className={styles.clear_all_wrap}>
+                <label className={styles.yellow_label}>Pick any 05 numbers</label>
+
+                <div className={styles.clear_all_btn_wrap}>
+                  <button className={styles.auto_select_btn} >Auto Select
+                    <img src='/refresh-ccw.png' className={styles.refresh} /></button>
+                  <button className={styles.auto_select_btn}>Clear All
+                    <img src='/trash-2.png' className={styles.refresh} /></button>
+                </div>
+
+              </div>
+
+              <div className={styles.purple_bg}>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>01</div>
+                  <div className={styles.circle}>02</div>
+                  <div className={styles.circle}>03</div>
+                  <div className={styles.circle}>04</div>
+                  <div className={styles.circle}>05</div>
+                  <div className={styles.circle}>06</div>
+                  <div className={styles.circle}>07</div>
+                  <div className={styles.circle}>08</div>
+                  <div className={styles.circle}>09</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>10</div>
+                  <div className={styles.circle}>11</div>
+                  <div className={styles.circle}>12</div>
+                  <div className={styles.circle}>13</div>
+                  <div className={styles.circle}>14</div>
+                  <div className={styles.circle}>15</div>
+                  <div className={styles.circle}>16</div>
+                  <div className={styles.circle}>17</div>
+                  <div className={styles.circle}>18</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>19</div>
+                  <div className={styles.circle}>20</div>
+                  <div className={styles.circle}>21</div>
+                  <div className={styles.circle}>22</div>
+                  <div className={styles.circle}>23</div>
+                  <div className={styles.circle}>24</div>
+                  <div className={styles.circle}>25</div>
+                  <div className={styles.circle}>26</div>
+                  <div className={styles.circle}>27</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>28</div>
+                  <div className={styles.circle}>29</div>
+                  <div className={styles.circle}>30</div>
+                  <div className={styles.circle}>31</div>
+                  <div className={styles.circle}>32</div>
+                  <div className={styles.circle}>33</div>
+                  <div className={styles.circle}>34</div>
+                  <div className={styles.circle}>35</div>
+                  <div className={styles.circle}>36</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>37</div>
+                  <div className={styles.circle}>38</div>
+                  <div className={styles.circle}>39</div>
+                  <div className={styles.circle}>40</div>
+                  <div className={styles.circle}>41</div>
+                  <div className={styles.circle}>42</div>
+                  <div className={styles.circle}>43</div>
+                  <div className={styles.circle}>44</div>
+                  <div className={styles.circle}>45</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>46</div>
+                  <div className={styles.circle}>47</div>
+                  <div className={styles.circle}>48</div>
+                  <div className={styles.circle}>49</div>
+                  <div className={styles.circle}>50</div>
+                  <div className={styles.circle}>51</div>
+                  <div className={styles.circle}>52</div>
+                  <div className={styles.circle}>53</div>
+                  <div className={styles.circle}>54</div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <div className={styles.calendar_wrap}>
+            <div className={styles.calendar_title_wrap}>
+              <div>
+                <label className={styles.calendar_label}>Ticket 02</label>
+              </div>
+
+              <div className={styles.circle1}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+              </div>
+
+            </div>
+            <div className={styles.calendar}>
+              <div className={styles.clear_all_wrap}>
+                <label className={styles.yellow_label}>Pick any 05 numbers</label>
+
+                <div className={styles.clear_all_btn_wrap}>
+                  <button className={styles.auto_select_btn} >Auto Select
+                    <img src='/refresh-ccw.png' className={styles.refresh} /></button>
+                  <button className={styles.auto_select_btn}>Clear All
+                    <img src='/trash-2.png' className={styles.refresh} /></button>
+                </div>
+
+              </div>
+
+              <div className={styles.purple_bg}>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>01</div>
+                  <div className={styles.circle}>02</div>
+                  <div className={styles.circle}>03</div>
+                  <div className={styles.circle}>04</div>
+                  <div className={styles.circle}>05</div>
+                  <div className={styles.circle}>06</div>
+                  <div className={styles.circle}>07</div>
+                  <div className={styles.circle}>08</div>
+                  <div className={styles.circle}>09</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>10</div>
+                  <div className={styles.circle}>11</div>
+                  <div className={styles.circle}>12</div>
+                  <div className={styles.circle}>13</div>
+                  <div className={styles.circle}>14</div>
+                  <div className={styles.circle}>15</div>
+                  <div className={styles.circle}>16</div>
+                  <div className={styles.circle}>17</div>
+                  <div className={styles.circle}>18</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>19</div>
+                  <div className={styles.circle}>20</div>
+                  <div className={styles.circle}>21</div>
+                  <div className={styles.circle}>22</div>
+                  <div className={styles.circle}>23</div>
+                  <div className={styles.circle}>24</div>
+                  <div className={styles.circle}>25</div>
+                  <div className={styles.circle}>26</div>
+                  <div className={styles.circle}>27</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>28</div>
+                  <div className={styles.circle}>29</div>
+                  <div className={styles.circle}>30</div>
+                  <div className={styles.circle}>31</div>
+                  <div className={styles.circle}>32</div>
+                  <div className={styles.circle}>33</div>
+                  <div className={styles.circle}>34</div>
+                  <div className={styles.circle}>35</div>
+                  <div className={styles.circle}>36</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>37</div>
+                  <div className={styles.circle}>38</div>
+                  <div className={styles.circle}>39</div>
+                  <div className={styles.circle}>40</div>
+                  <div className={styles.circle}>41</div>
+                  <div className={styles.circle}>42</div>
+                  <div className={styles.circle}>43</div>
+                  <div className={styles.circle}>44</div>
+                  <div className={styles.circle}>45</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>46</div>
+                  <div className={styles.circle}>47</div>
+                  <div className={styles.circle}>48</div>
+                  <div className={styles.circle}>49</div>
+                  <div className={styles.circle}>50</div>
+                  <div className={styles.circle}>51</div>
+                  <div className={styles.circle}>52</div>
+                  <div className={styles.circle}>53</div>
+                  <div className={styles.circle}>54</div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
         </div>
-        <div className={styles.calendar_wrap}>
-          <div className={styles.calendar}>  <Calendar /></div>
-          <div className={styles.calendar}>  <Calendar /></div>
+
+
+        <div className={styles.calendar_main_wrap}>
+          <div className={styles.calendar_wrap}>
+            <div className={styles.calendar_title_wrap}>
+              <div>
+                <label className={styles.calendar_label}>Ticket 03</label>
+              </div>
+
+              <div className={styles.circle1}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+              </div>
+
+            </div>
+            <div className={styles.calendar}>
+              <div className={styles.clear_all_wrap}>
+                <label className={styles.yellow_label}>Pick any 05 numbers</label>
+
+                <div className={styles.clear_all_btn_wrap}>
+                  <button className={styles.auto_select_btn} >Auto Select
+                    <img src='/refresh-ccw.png' className={styles.refresh} /></button>
+                  <button className={styles.auto_select_btn}>Clear All
+                    <img src='/trash-2.png' className={styles.refresh} /></button>
+                </div>
+
+              </div>
+
+              <div className={styles.purple_bg}>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>01</div>
+                  <div className={styles.circle}>02</div>
+                  <div className={styles.circle}>03</div>
+                  <div className={styles.circle}>04</div>
+                  <div className={styles.circle}>05</div>
+                  <div className={styles.circle}>06</div>
+                  <div className={styles.circle}>07</div>
+                  <div className={styles.circle}>08</div>
+                  <div className={styles.circle}>09</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>10</div>
+                  <div className={styles.circle}>11</div>
+                  <div className={styles.circle}>12</div>
+                  <div className={styles.circle}>13</div>
+                  <div className={styles.circle}>14</div>
+                  <div className={styles.circle}>15</div>
+                  <div className={styles.circle}>16</div>
+                  <div className={styles.circle}>17</div>
+                  <div className={styles.circle}>18</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>19</div>
+                  <div className={styles.circle}>20</div>
+                  <div className={styles.circle}>21</div>
+                  <div className={styles.circle}>22</div>
+                  <div className={styles.circle}>23</div>
+                  <div className={styles.circle}>24</div>
+                  <div className={styles.circle}>25</div>
+                  <div className={styles.circle}>26</div>
+                  <div className={styles.circle}>27</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>28</div>
+                  <div className={styles.circle}>29</div>
+                  <div className={styles.circle}>30</div>
+                  <div className={styles.circle}>31</div>
+                  <div className={styles.circle}>32</div>
+                  <div className={styles.circle}>33</div>
+                  <div className={styles.circle}>34</div>
+                  <div className={styles.circle}>35</div>
+                  <div className={styles.circle}>36</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>37</div>
+                  <div className={styles.circle}>38</div>
+                  <div className={styles.circle}>39</div>
+                  <div className={styles.circle}>40</div>
+                  <div className={styles.circle}>41</div>
+                  <div className={styles.circle}>42</div>
+                  <div className={styles.circle}>43</div>
+                  <div className={styles.circle}>44</div>
+                  <div className={styles.circle}>45</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>46</div>
+                  <div className={styles.circle}>47</div>
+                  <div className={styles.circle}>48</div>
+                  <div className={styles.circle}>49</div>
+                  <div className={styles.circle}>50</div>
+                  <div className={styles.circle}>51</div>
+                  <div className={styles.circle}>52</div>
+                  <div className={styles.circle}>53</div>
+                  <div className={styles.circle}>54</div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <div className={styles.calendar_wrap}>
+            <div className={styles.calendar_title_wrap}>
+              <div>
+                <label className={styles.calendar_label}>Ticket 04</label>
+              </div>
+
+              <div className={styles.circle1}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+              </div>
+
+            </div>
+            <div className={styles.calendar}>
+              <div className={styles.clear_all_wrap}>
+                <label className={styles.yellow_label}>Pick any 05 numbers</label>
+
+                <div className={styles.clear_all_btn_wrap}>
+                  <button className={styles.auto_select_btn} >Auto Select
+                    <img src='/refresh-ccw.png' className={styles.refresh} /></button>
+                  <button className={styles.auto_select_btn}>Clear All
+                    <img src='/trash-2.png' className={styles.refresh} /></button>
+                </div>
+
+              </div>
+
+              <div className={styles.purple_bg}>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>01</div>
+                  <div className={styles.circle}>02</div>
+                  <div className={styles.circle}>03</div>
+                  <div className={styles.circle}>04</div>
+                  <div className={styles.circle}>05</div>
+                  <div className={styles.circle}>06</div>
+                  <div className={styles.circle}>07</div>
+                  <div className={styles.circle}>08</div>
+                  <div className={styles.circle}>09</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>10</div>
+                  <div className={styles.circle}>11</div>
+                  <div className={styles.circle}>12</div>
+                  <div className={styles.circle}>13</div>
+                  <div className={styles.circle}>14</div>
+                  <div className={styles.circle}>15</div>
+                  <div className={styles.circle}>16</div>
+                  <div className={styles.circle}>17</div>
+                  <div className={styles.circle}>18</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>19</div>
+                  <div className={styles.circle}>20</div>
+                  <div className={styles.circle}>21</div>
+                  <div className={styles.circle}>22</div>
+                  <div className={styles.circle}>23</div>
+                  <div className={styles.circle}>24</div>
+                  <div className={styles.circle}>25</div>
+                  <div className={styles.circle}>26</div>
+                  <div className={styles.circle}>27</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>28</div>
+                  <div className={styles.circle}>29</div>
+                  <div className={styles.circle}>30</div>
+                  <div className={styles.circle}>31</div>
+                  <div className={styles.circle}>32</div>
+                  <div className={styles.circle}>33</div>
+                  <div className={styles.circle}>34</div>
+                  <div className={styles.circle}>35</div>
+                  <div className={styles.circle}>36</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>37</div>
+                  <div className={styles.circle}>38</div>
+                  <div className={styles.circle}>39</div>
+                  <div className={styles.circle}>40</div>
+                  <div className={styles.circle}>41</div>
+                  <div className={styles.circle}>42</div>
+                  <div className={styles.circle}>43</div>
+                  <div className={styles.circle}>44</div>
+                  <div className={styles.circle}>45</div>
+                </div>
+                <div className={styles.circle1}>
+                  <div className={styles.circle}>46</div>
+                  <div className={styles.circle}>47</div>
+                  <div className={styles.circle}>48</div>
+                  <div className={styles.circle}>49</div>
+                  <div className={styles.circle}>50</div>
+                  <div className={styles.circle}>51</div>
+                  <div className={styles.circle}>52</div>
+                  <div className={styles.circle}>53</div>
+                  <div className={styles.circle}>54</div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
         </div>
+
 
         <div className={styles.calendar_btn_wrap}>
 
           <button className={styles.calendar_btn} variant="primary" onClick={() => setModalShow(true)}>Save choices</button>
 
-        
-
-
         </div>
 
 
-
-      </div>
-
-
-
-
-
-      <footer className={styles.footer_wrap}>
+        <footer className={styles.footer_wrap}>
         <div className={styles.footer_left}>
           Lorem ipsum dolor sit amet,
           consectetur adipiscing elit,
@@ -168,6 +571,13 @@ export default function Home() {
         </div>
 
       </footer>
+      </div>
+
+
+
+
+
+    
     </div>
 
 
