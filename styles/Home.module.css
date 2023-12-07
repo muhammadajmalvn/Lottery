@@ -479,6 +479,7 @@
 .play_wrap {
   background: #121022;
   height: 100vh;
+  margin-top: -14px;
 }
 
 .tabel {
@@ -487,8 +488,8 @@
 
 .table_bg {
   background: #121022;
-  height: 100vh;
-  margin-bottom: 10px;
+  height: 50vh;
+ 
 }
 
 .footer_wrap {

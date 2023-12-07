@@ -34,12 +34,12 @@ export default function Home() {
       <div className={styles.main_nav}>
 
         <ul className={styles.nav_style}>
-        
 
-          <Link href="/draw"  className={styles.list_style}>
-          <li className={styles.list_style}>Draws
-          </li>
-      </Link>
+
+          <Link href="/draw" className={styles.list_style}>
+            <li className={styles.list_style}>Draws
+            </li>
+          </Link>
           <li className={styles.list_style}>How to Play</li>
           <li className={styles.list_style}>Events</li>
           <li className={styles.list_style}>Deals & Offers</li>
@@ -454,7 +454,7 @@ export default function Home() {
           </div>
         </Carousel>
 
-        
+
         {/* <div className={styles.box_wrap}>
 
           <div className={styles.win_box}>
@@ -462,121 +462,121 @@ export default function Home() {
           </div>
         </div> */}
 
-<div className={styles.play_wrap}>
-        <div className={styles.title_layout1}>
-          <label className={styles.label_main}>
-          How to  <span className={styles.banner_title_pink}>Play</span>
-          </label>
-          <p className={styles.second_lable}>
-           Pass through these 3 easy steps.
-          </p>
+        <div className={styles.play_wrap}>
+          <div className={styles.title_layout1}>
+            <label className={styles.label_main}>
+              How to  <span className={styles.banner_title_pink}>Play</span>
+            </label>
+            <p className={styles.second_lable}>
+              Pass through these 3 easy steps.
+            </p>
 
-    <img className={styles.play_img} src='/play.png'/>
+            <img className={styles.play_img} src='/play.png' />
 
-        </div>
+          </div>
         </div>
 
 
         <div className={styles.table_bg}>
 
-        <div className={styles.title_layout1}>
-          <label className={styles.label_main}>
-          Winners  <span className={styles.banner_title_pink}>History</span>
-          </label>
-          <p className={styles.second_lable}>
-          Here is the list of previous winners
-          </p>
-          <p className={styles.second_lable1}>
-          Note : Only winners from the last 3 months are listed
-          </p>
+          <div className={styles.title_layout1}>
+            <label className={styles.label_main}>
+              Winners  <span className={styles.banner_title_pink}>History</span>
+            </label>
+            <p className={styles.second_lable}>
+              Here is the list of previous winners
+            </p>
+            <p className={styles.second_lable1}>
+              Note : Only winners from the last 3 months are listed
+            </p>
 
 
 
 
-          <Table responsive>
-      <thead>
-        <tr>
-          <th>#</th>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>2</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>3</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-      </tbody>
-    </Table>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <th key={index}>Table heading</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td>3</td>
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <td key={index}>Table cell {index}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </Table>
 
-<footer className={styles.footer_wrap}>
-<div className={styles.footer_left}>
-Lorem ipsum dolor sit amet, 
-consectetur adipiscing elit, 
-sed do eiusmod tempor         
-</div>
-<div className={styles.footer_middle}>
-<input type="text" placeholder="Search.." className={styles.search}/>
-<img src='/arrow.png' className={styles.arrow_img}/>
-<div className={styles.footer_mid_sub}>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Company</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
-    
-    </div>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Terms</label>
-  <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
-  <div className={styles.footer_mid_sub_grid}>
-     <label className={styles.footer_mid_sub_grid_title}>Support</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
-    </div>
-</div>
-</div>
-
-<div className={styles.footer_right}>
-Follow us on
-<div className={styles.social_media_wrap}>
- 
-<img src='/s_1.png' className={styles.social_img}/>
-<img src='/s_2.png' className={styles.social_img}/>
-<img src='/s_3.png' className={styles.social_img}/>
-<img src='/s_5.png' className={styles.social_img}/>
-<img src='/s_6.png' className={styles.social_img}/>
-
-</div>
-</div>
-
-</footer>
+           
+          </div>
         </div>
-        </div>
+        <footer className={styles.footer_wrap}>
+              <div className={styles.footer_left}>
+                Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit,
+                sed do eiusmod tempor
+              </div>
+              <div className={styles.footer_middle}>
+                <input type="text" placeholder="Search.." className={styles.search} />
+                <img src='/arrow.png' className={styles.arrow_img} />
+                <div className={styles.footer_mid_sub}>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Company</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
 
+                  </div>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Terms</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
+                  <div className={styles.footer_mid_sub_grid}>
+                    <label className={styles.footer_mid_sub_grid_title}>Support</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
+                    <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.footer_right}>
+                Follow us on
+                <div className={styles.social_media_wrap}>
+
+                  <img src='/s_1.png' className={styles.social_img} />
+                  <img src='/s_2.png' className={styles.social_img} />
+                  <img src='/s_3.png' className={styles.social_img} />
+                  <img src='/s_5.png' className={styles.social_img} />
+                  <img src='/s_6.png' className={styles.social_img} />
+
+                </div>
+              </div>
+
+            </footer>
       </div>
-      </div>
+    </div>
 
 
 
-    
+
 
   );
 
