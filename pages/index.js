@@ -8,10 +8,10 @@ import { Carousel } from 'react-responsive-carousel';
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
 import { useBackend } from '../hooks/useBackend';
+import Router from "next/router";
 
 export default function Home() {
   const { rows: events } = useBackend("events/get-events", { sort: { sortOrder: "DESC", sortField: "id" } });
-  console.log(events,'88888888888');
   // Assuming 'events' is an array of event objects
   const filteredEvents = events?.filter((event) => {
     // Get the current date and time
@@ -33,6 +33,12 @@ export default function Home() {
   // Now 'filteredEvents' contains only the events that meet the criteria
   console.log(filteredEvents);
 
+  let onViewDetailsClick = (e, id) => {
+    Router.push(`/draw/${id}`);
+  };
+  let onBuyClick = (e, id) => {
+    Router.push(`/products/${id}`);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -175,8 +181,12 @@ export default function Home() {
 
                   <div className={styles.button_wrap}>
 
-                    <button className={styles.button_view}>View Details</button>
-                    <button className={styles.button_buynow}>Buy now</button>
+                    <button className={styles.button_view} onClick={(e) => {
+                        onViewDetailsClick(e, event.id);
+                      }}>View Details</button>
+                    <button className={styles.button_buynow} onClick={(e)=>{
+                      onBuyClick(e,event.id);
+                    }}>Buy now</button>
 
                   </div>
                 </div>
