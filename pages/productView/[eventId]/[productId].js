@@ -26,13 +26,14 @@ export default function Home() {
       });
     }
   }, [eventId, productId]);
-  const handleCheckout = async (quantity, orderAmount, price) => {
-    console.log(quantity, orderAmount, productId, price);
+  const handleCheckout = async (quantity, orderAmount, price,purchaseThreshold) => {
+    const couponNumber = Math.floor(orderAmount/purchaseThreshold);
     const orderItems = []
     const item = { quantity, productId, orderAmount, price }
     orderItems.push(item)
-    const response=await createOrder({orderAmount,orderItems});
-    if (response) {
+    const order=await createOrder({orderAmount,orderItems});
+
+    if (order) {
       var options = {
         key: "rzp_test_F6WOMA8GfzTV9U", // Enter the Key ID generated from the Dashboard
         orderAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -40,17 +41,21 @@ export default function Home() {
         name: "Lottery Tech Corp", //your business name
         description: "Test Transaction",
         image: "https://example.com/your_logo",
-        order_id: response[0].id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        order_id: order[0].id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+       
         handler: async function (response) {
+
           const { razorpay_payment_id: payment_id, razorpay_order_id: order_id, razorpay_signature: signature } = { ...response };
+
           const validateRes = await verifyOrder({order_id,payment_id,signature})
-          console.log(validateRes[2].success,'validation result');
+
           if (validateRes[2].success==true) {
-            Router.push('/congratulations_screen')
+            Router.push(`/congratulations_screen/${order[0].id}/${couponNumber}/${eventId}`)
           }else{
             alert('Payment verification failed')
           }
         },
+
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
           name: "ABC", //your customer's name
@@ -247,7 +252,7 @@ export default function Home() {
 
               <button className={styles.cart_add}>Add To Cart</button>
               <button className={styles.checkout_btn} onClick={(e) => {
-                handleCheckout(quantity, quantity * item?.product?.sellPrice, item?.product?.sellPrice)
+                handleCheckout(quantity, quantity * item?.product?.sellPrice, item?.product?.sellPrice,item?.event?.purchaseThreshold)
               }}>Checkout</button>
 
 

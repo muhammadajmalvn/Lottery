@@ -10,7 +10,6 @@ import Link from 'next/link';
 
 export default function Draw() {
   const { row: eventDetails, update: updateEvent, setFilter } = useBackend("events", { noGet: true });
-console.log(eventDetails,'9999999999999999999');
   return (
     <div className={styles.container}>
       <Head>
