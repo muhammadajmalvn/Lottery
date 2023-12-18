@@ -24,6 +24,7 @@ export default function Home() {
         <title>Lottery App</title>
         <link rel="icon" href="/favicon.ico" />
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'></link>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Holtwood+One+SC" />
         <link href="https://fonts.cdnfonts.com/css/style-script" rel="stylesheet"></link>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

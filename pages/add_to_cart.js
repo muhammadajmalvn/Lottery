@@ -7,9 +7,13 @@ import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
+import ModalPopup from "../pages/modal";
+import { useState } from "react";
 
 export default function Home() {
+  const [modalShow, setModalShow] = React.useState(false);
   return (
+
     <div className={styles.container}>
       <Head>
         <title>Lottery App</title>
@@ -21,7 +25,9 @@ export default function Home() {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       </Head>
 
-
+      <ModalPopup show={modalShow}
+        onHide={() => setModalShow(false)}>
+      </ModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -177,7 +183,7 @@ export default function Home() {
         <label className={styles.total_price}>₹ 1500</label>
         </div>
 
-        <button className={styles.cart_add}>Add To Cart</button>
+        <button className={styles.cart_add} onClick={() => setModalShow(true)}>Add To Cart</button>
         <button className={styles.checkout_btn}>Checkout</button>
 
 
