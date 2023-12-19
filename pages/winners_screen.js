@@ -63,17 +63,24 @@ export default function Home() {
         <lablel className={styles.hamburger_label}>Home/</lablel>
         <lablel className={styles.hamburger_label1}>Winners</lablel>
       </div>
-      <div className={styles.winners_banner_wrap}>
-        <div className={styles.winners_wrap}>
-          <div className={styles.left_wrap_winner}>
-            <label>Mega festival</label>
+
+      <div className={styles.run_wrap}>
+
+      <div className={styles.left_wrap_winner}>
+        <label></label>
+            <label className={styles.run}>RUN<span className={styles.digit}>4</span></label>
             <label className={styles.yellow_label_winner}>₹3,00,00,000</label>
 
           </div>
+      </div>
+      <div className={styles.winners_banner_wrap}>
+        <div className={styles.winners_wrap}>
+       
 
           <div className={styles.draw_banner_wraper}>
 
-            <label className={styles.ready_label}>ARE YOU READY?</label>
+       
+            <img className={styles.ready_label} src='/title.png'/>
             <div className={styles.number_set}>
               <label className={styles.number}>00</label>
               <label className={styles.number}>00</label>

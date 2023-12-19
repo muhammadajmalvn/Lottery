@@ -154,7 +154,7 @@ export default function Home() {
           <img  className={styles.map_pin} src='/map-pin.png'/>
           <label className={styles.deliver_to}>Deliver to</label>
         </div>
-<label className={styles.deliver_address}>ADDRESS <span className={styles.deliver_address_plus} onClick={() => setAddressModalShow(true)}>+</span></label>
+<label className={styles.deliver_address}>ADDRESS </label>
         <hr className={styles.line}></hr>
 
 
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
 
         <button className={styles.cart_add}>Add To Cart</button>
-        <button className={styles.checkout_btn}>Checkout</button>
+        <button className={styles.checkout_btn}onClick={() => setAddressModalShow(true)}>Checkout</button>
 
 
         </div>
