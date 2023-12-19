@@ -7,11 +7,11 @@ import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
-import ModalPopup from "../pages/modal";
+import AddressModalPopup from "../pages/addressmodal";
 import { useState } from "react";
 
 export default function Home() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [addressmodal, setAddressModalShow] = React.useState(false);
   return (
 
     <div className={styles.container}>
@@ -25,9 +25,9 @@ export default function Home() {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       </Head>
 
-      <ModalPopup show={modalShow}
-        onHide={() => setModalShow(false)}>
-      </ModalPopup>
+      <AddressModalPopup show={addressmodal}
+        onHide={() => setAddressModalShow(false)}>
+      </AddressModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -154,7 +154,7 @@ export default function Home() {
           <img  className={styles.map_pin} src='/map-pin.png'/>
           <label className={styles.deliver_to}>Deliver to</label>
         </div>
-<label className={styles.deliver_address}>ADDRESS</label>
+<label className={styles.deliver_address}>ADDRESS <span className={styles.deliver_address_plus} onClick={() => setAddressModalShow(true)}>+</span></label>
         <hr className={styles.line}></hr>
 
 
@@ -183,7 +183,7 @@ export default function Home() {
         <label className={styles.total_price}>₹ 1500</label>
         </div>
 
-        <button className={styles.cart_add} onClick={() => setModalShow(true)}>Add To Cart</button>
+        <button className={styles.cart_add}>Add To Cart</button>
         <button className={styles.checkout_btn}>Checkout</button>
 
 
