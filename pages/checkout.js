@@ -7,8 +7,11 @@ import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
+import AddressModalPopup from "../pages/addressmodal";
+import { useState } from "react";
 
 export default function Home() {
+  const [addressmodal, setAddressModalShow] = React.useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +24,9 @@ export default function Home() {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       </Head>
 
-
+      <AddressModalPopup show={addressmodal}
+        onHide={() => setAddressModalShow(false)}>
+      </AddressModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -68,7 +73,7 @@ export default function Home() {
 
 
             <div className={styles.add_wrap1}>
-              <div className={styles.add_wrap}>
+              <div className={styles.add_wrap} onClick={() => setAddressModalShow(true)}>
                 Add +
               </div>
 

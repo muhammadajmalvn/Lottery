@@ -112,6 +112,18 @@
   height: 30px;
   margin-left: 20px;
   padding-left: 10px;
+  width: 70%;
+  margin-right: 40px;
+  border-radius: 5px;
+  background: #524B86;
+  height: 54px;
+  color: rgba(160, 160, 160, 0.93);
+text-align: left;
+font-family: Nunito;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 19px; /* 118.75% */
 }
 
 .header_close {
@@ -137,7 +149,7 @@
 .signup_btn {
   background-color: #FF6F96;
   padding: 10px;
-  width: 121.189px;
+  width: 237px;
   height: 42px;
   padding: 12px 24px;
   justify-content: center;
@@ -147,9 +159,10 @@
   box-shadow: 0px 4px 16px 0px rgba(144, 39, 142, 0.15);
   color: white;
   border: 1px solid #FF6F96;
+  margin-top: 20px;
   margin-left: 20px;
-
 }
+
 
 .nav_icons {
   width: 24px;
@@ -583,12 +596,13 @@
 .arrow_img {
   position: absolute;
   right: 25px;
-  top: 60px;
+  top: 94px;
 }
 
 .footer_mid_sub {
   display: flex;
 }
+
 
 .footer_mid_sub_grid {
   width: 100%;
@@ -1502,6 +1516,7 @@
 
 .add_wrap1 {
   display: flex;
+  cursor: pointer;
 }
 
 .add_wrap {
@@ -1562,7 +1577,16 @@
   margin-right: 50px;
 
 }
-
+.checkbox_wrapper{
+  display: flex;
+  align-items: center;
+}
+.checkbox_wrap1{
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
 .payment_method {
   width: 84%;
   height: 57px;
@@ -1898,7 +1922,15 @@
   border-radius: 10px;
   border: 0.5px solid #FFF;
   color: white;
-  background: #171627;
+  padding: 30px;
+  /* background: #171627; */
+  background: url('/blur.png');
+}
+
+.modal_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .popup_img_wrap {
@@ -1907,15 +1939,16 @@
 }
 
 .popup_img_wrap1 {
-  text-align: center;
+  text-align: left;
   font-size: 20px;
+  width: 50%;
 }
 
 .popup_img_wrap1_field {
   margin-bottom: 20px;
 
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .popup_img_wrap1_field_label {
@@ -1954,12 +1987,13 @@
 
 .header_title {
   color: #FFF;
-  text-align: center;
+  text-align: left;
   font-family: Nunito;
   font-size: 40px;
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
+  margin-left: 20px;
   /* 47.5% */
 }
 
@@ -1998,11 +2032,13 @@
   padding-left: 20px;
 
 }
-.run{
+
+.run {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .digit {
   display: flex;
   justify-content: center;
