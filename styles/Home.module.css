@@ -116,6 +116,7 @@
   margin-right: 40px;
   border-radius: 5px;
   background: #524B86;
+  border: 1px solid #524B86;
   height: 54px;
   color: rgba(160, 160, 160, 0.93);
 text-align: left;
@@ -1662,7 +1663,22 @@ line-height: 19px; /* 118.75% */
   align-items: center;
   flex-direction: column;
 }
-
+.field_style_signup{
+  width: 80%;
+height: 54px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #524B86;
+border: 1px solid #524B86;
+color: rgba(160, 160, 160, 0.93);
+text-align: left;
+font-family: Nunito;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 19px; /* 118.75% */
+padding-left: 20px;
+}
 .order_placed_sub {
   color: #D9D9D9;
   font-family: Nunito;
@@ -2184,7 +2200,7 @@ line-height: 19px; /* 118.75% */
 }
 
 .login_bg {
-  height: 100vh;
+  height: auto;
   background: #121022;
   display: flex;
   width: 100%;
@@ -2216,6 +2232,16 @@ line-height: 19px; /* 118.75% */
   text-align: center;
 }
 
+.login_right_inner1 {
+  border-radius: 10px;
+  background: #33314C;
+  height: 800px;
+  flex-shrink: 0;
+  padding: 20px;
+  width: 70%;
+  text-align: center;
+}
+
 .logo_img {
   width: 525px;
   height: 525px;
@@ -2238,6 +2264,22 @@ line-height: 19px; /* 118.75% */
   position: relative;
 }
 
+.field1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.field_label{
+  color: #FFF;
+text-align: center;
+font-family: Nunito;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 19px; /* 118.75% */
+}
 .img_user {
   position: absolute;
   left: 64px;
