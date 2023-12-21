@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #171627;
   align-items: center;
-  /* padding: 10px; */
+  padding: 10px;
 }
 
 .title a {
@@ -106,8 +106,6 @@
   list-style-type: none;
   align-items: center;
   cursor: pointer;
-  text-decoration: none;
-  color: white;
 }
 
 .main_nav {
@@ -491,7 +489,7 @@
 .table_bg {
   background: #121022;
   height: 50vh;
- 
+
 }
 
 .footer_wrap {
@@ -640,13 +638,14 @@
   /* 125% */
 }
 
-.draw_banner_wrap {
+.draw_banner_wraper {
   height: 350px;
   background: #1E1D32;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .draw_img {
@@ -662,8 +661,6 @@
   align-items: center;
   margin-top: 40px;
   background: #141227;
-
-
 }
 
 
@@ -1706,7 +1703,7 @@
   margin-bottom: 50px;
   margin-top: 15px;
   background: rgba(70, 72, 110, 0.90);
-  width: 510px;
+  width: 473px;
   height: 390px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -1746,15 +1743,13 @@
   align-items: center;
   color: #000;
   font-family: Nunito;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 5px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px;
 }
-.selected{
-  color: pink;
-}
+
 .clear_all_wrap {
   display: flex;
   justify-content: space-between;
@@ -1786,18 +1781,21 @@ margin: 5px;
   margin-right: 10px;
   /* 125% */
 }
-.refresh{
+
+.refresh {
   width: 11px;
   height: 11px;
   margin-left: 10px;
 }
-.purple_bg{
+
+.purple_bg {
   width: 100%;
-height: 260px;
-flex-shrink: 0;
-background: rgba(70, 72, 110, 0.90);
+  height: 312px;
+  flex-shrink: 0;
+  background: rgba(70, 72, 110, 0.90);
 }
-.clear_all_btn_wrap{
+
+.clear_all_btn_wrap {
   display: flex;
 }
 
@@ -1910,25 +1908,153 @@ background: rgba(70, 72, 110, 0.90);
   /* 47.5% */
 }
 
-/* Add these styles to your existing CSS file */
-
-.calendar_main_wrap {
+.winners_wrap {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 70%;
+}
+
+.winners_banner_wrap {
+  display: flex;
+  width: 100%;
+  color: white;
+ 
+}
+
+.left_wrap_winner {
+  width: 70% !important;
+  display: flex;
   justify-content: space-between;
+  color: #FFF;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  white-space: nowrap;
+  /* 31.667% */
+  text-transform: uppercase;
+  font-family: Nunito;
+  font-weight: 600;
+  height: 250px;
+  align-items: center;
+
 }
 
-.ticketWrapper { /* 48% to leave some space between the tickets */
-  margin-bottom: 20px;
-  margin-left: 4%;
+.yellow_label_winner {
+  color: #FCC34A;
 }
 
-.centeredTicket {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%; /* Adjust the width as needed */
+.right_wrap_winner {
+  width: 30%;
+  display: flex;
+  border-radius: 20px;
+  background: #1B1C35;
+  color:white;
+  flex-direction: column;
+
 }
 
+.ready_label {
+  color: #FEFCF7;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Nunito;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.number_set {
+  display: flex;
+}
+
+.number {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  color: black;
+  font-weight: 600;
+  font-size: 30px;
+  font-family: Nunito;
+}
+
+.start_btn {
+  color: #FFF;
+  font-family: Nunito;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 168px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+background: #FF6F96;
+box-shadow: 0px 4px 16px 0px rgba(144, 39, 142, 0.15);
+margin-top: 20px;
+}
+.winner_wrap{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.label_winner{
+  color: #FFF;
+  margin-top: 50px;
+  font-family: Nunito;
+font-size: 40px;
+font-style: normal;
+line-height: 19px; /* 47.5% */
+text-transform: uppercase;
+font-weight: 900;
+text-align: center;
+}
+.winners_list_wrap{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 500px;
+}
+.list_label_wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.white_bubble_wrap{
+  display: flex;
+}
+.white_bubble{
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: Nunito;
+}
+.list_label{
+  color: #FCC34A;
+  font-family: Nunito;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 38px; /* 211.111% */
+text-transform: uppercase;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
