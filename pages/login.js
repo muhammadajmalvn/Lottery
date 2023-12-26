@@ -1,14 +1,49 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import React, { Component } from 'react';
-
+import React, { Component, useState } from 'react';
+import Router from "next/router";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
+import { post } from '../libraries/httpService';
 
 export default function Home() {
+  const [user,setUser]= useState({
+    email:"",
+    password:""
+  })
+  const [error, setError] = useState();
+const[isLoading,setIsLoading] = useState();
+  const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError("");
+    setIsLoading(true);
+    try {
+      let {data} = await post("login",{email:user.email,password: user.password});
+       console.log(data,'data');
+       if(data?.accessToken){
+        localStorage.setItem("user", JSON.stringify(data));
+        setTimeout(() => {
+          // Router.push(sessionStorage.getItem("lastUrl"));
+          Router.push("/");
+        }, 1000);
+       }else{
+        setIsLoading(false);
+        setError("Unable to login to your account, Please try again");
+       }
+    } catch (error) {
+      console.log(error,'error');
+      setIsLoading(false);
+      setError(error?.response?.data?.message)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,29 +64,30 @@ export default function Home() {
         <div className={styles.login_right}>
           <div className={styles.login_right_inner}>
             <label className={styles.login_label}>LOGIN</label>
+            {error&&<div className='error' style={{color:'red'}}>{error}</div>}
             <div className={styles.login_form}>
-            
-              <div className={styles.field}>
-              <img src='/user.png' className={styles.img_user}/>
-                <input className={styles.field_style} type="text" id="fname" name="fname" placeholder='Your Name'/>
-              </div>
-            
-              <div className={styles.field}>
-              <img src='/lock.png' className={styles.img_lock}/>
-              <img src='/eye.png' className={styles.img_eye}/>
-                <input className={styles.field_style} type="text" id="lname" name="lname" placeholder='Password'/>
-                <label className={styles.login_forgot}>Forgot password?</label>
-              </div>
-              <div  className={styles.login_btn_wrap}>
-                <input  className={styles.login_btn}type="submit" value="Log In" />
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className={styles.field}>
+                  <img src='/user.png' className={styles.img_user} />
+                  <input className={styles.field_style} type="email" id="email" name="email" placeholder='Email'onChange={handleChange} required/>
+                </div>
 
+                <div className={styles.field}>
+                  <img src='/lock.png' className={styles.img_lock} />
+                  <img src='/eye.png' className={styles.img_eye} />
+                  <input className={styles.field_style} type="password" id="password" name="password" placeholder='Password' onChange={handleChange} required/>
+                  {/* <label className={styles.login_forgot}>Forgot password?</label> */}
+                </div>
+                <div className={styles.login_btn_wrap}>
+                  <button className={styles.login_btn} type="submit">Log In</button>
+                </div>
+              </form>
               <div>
                 <label className={styles.login_or}>OR</label>
               </div>
-              <div  className={styles.login_btn_wrap1}>
-                <input  className={styles.login_google}type="submit" value="Continue with Google" />
-                <img src='/google.png' className={styles.img_google}/>
+              <div className={styles.login_btn_wrap1}>
+                <input className={styles.login_google} type="submit" value="Continue with Google" />
+                <img src='/google.png' className={styles.img_google} />
               </div>
               <div>
                 <label className={styles.login_or}>Not on Lottech yet?<span className={styles.login_signup}> Sign up</span></label>
