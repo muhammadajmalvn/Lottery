@@ -451,7 +451,10 @@ export default function Home() {
               </tbody>
             </Table>
 
-            <footer className={styles.footer_wrap}>
+           
+          </div>
+        </div>
+        <footer className={styles.footer_wrap}>
               <div className={styles.footer_left}>
                 Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit,
@@ -495,9 +498,6 @@ export default function Home() {
               </div>
 
             </footer>
-          </div>
-        </div>
-
       </div>
     </div>
 

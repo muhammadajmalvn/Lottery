@@ -8,8 +8,11 @@ import { Carousel } from 'react-responsive-carousel';
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
 
+
 export default function Home() {
+
   return (
+
     <div className={styles.container}>
       <Head>
         <title>Lottery App</title>
@@ -21,7 +24,7 @@ export default function Home() {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       </Head>
 
-
+   
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
           <li className={styles.list_style}>Contact us : 32564613164</li>
@@ -148,7 +151,7 @@ export default function Home() {
           <img  className={styles.map_pin} src='/map-pin.png'/>
           <label className={styles.deliver_to}>Deliver to</label>
         </div>
-<label className={styles.deliver_address}>ADDRESS</label>
+<label className={styles.deliver_address}>ADDRESS </label>
         <hr className={styles.line}></hr>
 
 
