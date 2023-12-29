@@ -37,8 +37,7 @@ export default function Home() {
           <li className={styles.list_style}>Draws
             <a href='/draw.js'></a></li>
           <li className={styles.list_style}>How to Play</li>
-          <li className={styles.list_style}>Events</li>
-          <li className={styles.list_style}>Deals & Offers</li>
+    
           <li className={styles.list_style}>Winners</li>
           <li className={styles.list_style}>
             <img src='/shopping-cart.png' className={styles.nav_icons} />

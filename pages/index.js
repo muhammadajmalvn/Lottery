@@ -16,6 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'></link>
         <link href="https://fonts.cdnfonts.com/css/style-script" rel="stylesheet"></link>
+        <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'></link>
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -34,15 +36,14 @@ export default function Home() {
       <div className={styles.main_nav}>
 
         <ul className={styles.nav_style}>
-        
 
-          <Link href="/draw"  className={styles.list_style}>
-          <li className={styles.list_style}>Draws
-          </li>
-      </Link>
+
+          <Link href="/draw" className={styles.list_style}>
+            <li className={styles.list_style}>Draws
+            </li>
+          </Link>
           <li className={styles.list_style}>How to Play</li>
-          <li className={styles.list_style}>Events</li>
-          <li className={styles.list_style}>Deals & Offers</li>
+
           <li className={styles.list_style}>Winners</li>
           <li className={styles.list_style}>
             <img src='/shopping-cart.png' className={styles.nav_icons} />
@@ -63,7 +64,7 @@ export default function Home() {
         </div>
         <div className={styles.right_side}>
 
-          <Carousel>
+          <Carousel autoPlay infiniteLoop showArrows={false} showThumbs={false}>
             <div>
               <img src="/img_1.png" />
 
@@ -116,7 +117,7 @@ export default function Home() {
 
 
 
-        <Carousel>
+        <Carousel autoPlay infiniteLoop showThumbs={false}>
           <div className={styles.grid_style}>
 
             <div className={styles.flex_container1}>
@@ -454,129 +455,177 @@ export default function Home() {
           </div>
         </Carousel>
 
-        
-        {/* <div className={styles.box_wrap}>
+      </div>
+      <div className={styles.box_wrapp}>
+  
 
-          <div className={styles.win_box}>
-            It’s your chance to <span className={styles.banner_title_pink}>  win!</span>
-          </div>
-        </div> */}
+        <label className={styles.win_box}> It’s your chance to <span className={styles.banner_title_pink}>  win!</span></label>
 
-<div className={styles.play_wrap}>
-        <div className={styles.title_layout1}>
+      </div>
+
+      <div className={styles.play_wrap}>
+        <div className={styles.title_layout2}>
           <label className={styles.label_main}>
-          How to  <span className={styles.banner_title_pink}>Play</span>
+            How to  <span className={styles.banner_title_pink}>Play</span>
           </label>
           <p className={styles.second_lable}>
-           Pass through these 3 easy steps.
+            Pass through these 3 easy steps.
           </p>
 
-    <img className={styles.play_img} src='/play.png'/>
+          <img className={styles.play_img} src='/play.png' />
 
         </div>
-        </div>
+      </div>
 
 
-        <div className={styles.table_bg}>
+      <div className={styles.table_bg}>
 
         <div className={styles.title_layout1}>
+          <div className={styles.dark_bg}>
           <label className={styles.label_main}>
-          Winners  <span className={styles.banner_title_pink}>History</span>
+            Winners  <span className={styles.banner_title_pink}>History</span>
           </label>
-          <p className={styles.second_lable}>
-          Here is the list of previous winners
-          </p>
+
           <p className={styles.second_lable1}>
-          Note : Only winners from the last 3 months are listed
+            Note : Only winners from the last 3 months are listed
           </p>
 
 
+          <div className={styles.all_evets_wrap}>
+            <div className={styles.option_wrapper}>
+              <select name="cars" id="cars" className={styles.all_evets}>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
+            <div className={styles.arrow_wrapper_div1}>
+              <input type="text" placeholder="Tell us about your experience with us " className={styles.search21} />
+              <img src='/search_icon.png' className={styles.search_img} />
+            </div>
 
+          </div>
 
+          <div className={styles.all_evets_wrap}>
+            <label>Mega Draw</label>
+            <input className={styles.checkbox_wrap} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+            <label>Weekly Draw</label>
+            <input className={styles.checkbox_wrap} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+            <label>Daily Draw</label>
+            <input className={styles.checkbox_wrap} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+
+            <div className={styles.date_wrap}>
+              <img src='/left_arrow_img.png' className={styles.left_arrow_img} />
+
+              <input type="date" id="" name="" placeholder='June 14, 2023' className={styles.date_wrap_bg} />
+              <img src='/right_arrow_img.png' className={styles.left_arrow_img} />
+
+            </div>
+          </div>
           <Table responsive>
-      <thead>
-        <tr>
-          <th>#</th>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>2</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>3</td>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <td key={index}>Table cell {index}</td>
-          ))}
-        </tr>
-      </tbody>
-    </Table>
+            <thead className={styles.table_header}>
+              <tr className={styles.table_row}>
+                <th>#</th>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <th key={index}>Table heading</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className={styles.table_row}>
+                <td>1</td>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <td key={index}>Name {index}</td>
+                ))}
+              </tr>
+              <tr className={styles.table_row}>
+                <td>2</td>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <td key={index}>Date {index}</td>
+                ))}
+              </tr>
+              <tr className={styles.table_row}>
+                <td>3</td>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <td key={index}>Event{index}</td>
+                ))}
+              </tr>
+              <tr className={styles.table_row}>
+                <td>4</td>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <td key={index}>Event{index}</td>
+                ))}
+              </tr>
+              <tr className={styles.table_row}>
+                <td>5</td>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <td key={index}>Event{index}</td>
+                ))}
+              </tr>
 
-<footer className={styles.footer_wrap}>
-<div className={styles.footer_left}>
-Lorem ipsum dolor sit amet, 
-consectetur adipiscing elit, 
-sed do eiusmod tempor         
-</div>
-<div className={styles.footer_middle}>
-<input type="text" placeholder="Search.." className={styles.search}/>
-<img src='/arrow.png' className={styles.arrow_img}/>
-<div className={styles.footer_mid_sub}>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Company</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
-    
-    </div>
-  <div className={styles.footer_mid_sub_grid}>
-    <label className={styles.footer_mid_sub_grid_title}>Terms</label>
-  <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
-  <div className={styles.footer_mid_sub_grid}>
-     <label className={styles.footer_mid_sub_grid_title}>Support</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
-    <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
-    </div>
-</div>
-</div>
+            </tbody>
 
-<div className={styles.footer_right}>
-Follow us on
-<div className={styles.social_media_wrap}>
- 
-<img src='/s_1.png' className={styles.social_img}/>
-<img src='/s_2.png' className={styles.social_img}/>
-<img src='/s_3.png' className={styles.social_img}/>
-<img src='/s_5.png' className={styles.social_img}/>
-<img src='/s_6.png' className={styles.social_img}/>
+          </Table>
 
-</div>
-</div>
 
-</footer>
         </div>
         </div>
 
       </div>
-      </div>
+
+      <footer className={styles.footer_wrap}>
+        <div className={styles.footer_left}>
+          Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit,
+          sed do eiusmod tempor
+        </div>
+        <div className={styles.footer_middle}>
+          <div className={styles.arrow_wrapper_div}>
+            <input type="text" placeholder="Tell us about your experience with us " className={styles.search} />
+            <img src='/arrow.png' className={styles.arrow_img} />
+          </div>
+          <div className={styles.footer_mid_sub}>
+            <div className={styles.footer_mid_sub_grid}>
+              <label className={styles.footer_mid_sub_grid_title}>Company</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>About us</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>Location</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>Partners</label>
+
+            </div>
+            <div className={styles.footer_mid_sub_grid}>
+              <label className={styles.footer_mid_sub_grid_title}>Terms</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>Terms & Conditiond</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>Privacy policy </label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>cookie Policy</label></div>
+            <div className={styles.footer_mid_sub_grid}>
+              <label className={styles.footer_mid_sub_grid_title}>Support</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>Contact us</label>
+              <label className={styles.footer_mid_sub_grid_subtitle}>FAQ</label>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.footer_right}>
+          Follow us on
+          <div className={styles.social_media_wrap}>
+
+            <img src='/s_1.png' className={styles.social_img} />
+            <img src='/s_2.png' className={styles.social_img} />
+            <img src='/s_3.png' className={styles.social_img} />
+            <img src='/s_5.png' className={styles.social_img} />
+            <img src='/s_6.png' className={styles.social_img} />
+
+          </div>
+        </div>
+
+      </footer>
+    </div>
 
 
 
-    
+
+
 
   );
 
