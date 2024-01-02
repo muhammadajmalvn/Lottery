@@ -159,26 +159,26 @@ export default function Home() {
 
 
           <div className={styles.radio_wrap}>
-            <input type="radio" value="Male" name="gender" /> CREDIT / DEBIT CARD
+            <input type="radio" value="Male" name="gender" /> Razorpay
           </div>
 
           <div className={styles.credit_card_wrap}>
-            <img src='/visa 1.png' className={styles.nav_icons1} />
-            <img src='/mastercard 1.png' className={styles.nav_icons1} />
+            <img src='/Razorpay_logo.webp' className={styles.nav_icons1} />
+            {/* <img src='/mastercard 1.png' className={styles.nav_icons1} />
             <img src='/payment 1.png' className={styles.nav_icons1} />
             <img src='/payment (1) 1.png' className={styles.nav_icons1} />
-            <img src='/payment (2) 1.png' className={styles.nav_icons1} />
+            <img src='/payment (2) 1.png' className={styles.nav_icons1} /> */}
           </div>
 
 
-          <div className={styles.radio_wrap}>
+          {/* <div className={styles.radio_wrap}>
             <input type="radio" value="Male" name="gender" /> UPI PAYMENT
           </div>
           <div className={styles.gpay_wrap}>
             <img src='/Group 1000005668.png' className={styles.nav_icons2} />
             <img src='/pngegg (6).png' className={styles.nav_icons2} />
             <img src='/payment 1.png' className={styles.nav_icons2} />
-          </div>
+          </div> */}
           <p className={styles.need_help}>
             Need help? Check our help page or contact us
             When your order is placed, we'll send you an e-mail message
