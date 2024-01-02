@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -9,9 +9,51 @@ import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
 import AddressModalPopup from "../pages/addressmodal";
 import { useState } from "react";
+import { useRouter } from 'next/router';
+import { useBackend } from '../hooks/useBackend';
 
 export default function Home() {
+  const router = useRouter();
+  const { orderAmount, quantity, price, purchaseThreshold } = router.query;
   const [addressmodal, setAddressModalShow] = React.useState(false);
+  const [addressData, setAddressData] = useState('')
+  const { rows: address, update: updateAddress, delete: deleteAddress, setFilter } = useBackend("address", { sort: { sortOrder: "DESC", sortField: "id" }, deleteUrl: "address", updateUrl: "address" });
+
+  console.log(address,'address');
+  const handleAddressSubmit = async (addressData) => {
+    await updateAddress(addressData)
+  };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setFilter({ user });
+    }
+  }, []);
+
+  const handleAddAddress = () => {
+    setAddressData({
+      id:null,
+      fullName: "",
+      email: "",
+      city: "",
+      mobileNumber: "",
+      street: "",
+      pinCode: "",
+      isDefault: false,
+    });
+    setAddressModalShow(true);
+  };
+
+  const handleEditAddress = (addressData) => {
+    // Display the modal with the data of the selected address
+    setAddressData(addressData);
+    setAddressModalShow(true);
+  };
+
+  const handleDeleteAddress = async(item)=>{
+    console.log(item,'idddddddddddddd');
+    await deleteAddress(item)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -25,7 +67,9 @@ export default function Home() {
       </Head>
 
       <AddressModalPopup show={addressmodal}
-        onHide={() => setAddressModalShow(false)}>
+        onHide={() => setAddressModalShow(false)}
+        onSubmit={handleAddressSubmit}
+        addressDetails={addressData}>
       </AddressModalPopup>
       <div className={styles.navigation}>
         <ul className={styles.nav_style}>
@@ -73,7 +117,7 @@ export default function Home() {
 
 
             <div className={styles.add_wrap1}>
-              <div className={styles.add_wrap} onClick={() => setAddressModalShow(true)}>
+              <div className={styles.add_wrap} onClick={() => handleAddAddress()}>
                 Add +
               </div>
 
@@ -88,22 +132,29 @@ export default function Home() {
 
           </div>
 
+          {address?.filter(item => !item.isDelete).map((item) => {
+            return (
+              <div className={styles.username_mainwrap}>
+                <div className={styles.username_wrap}>
+                  <div className={styles.radio_wrap}>
+                    <input type='radio' name='address' /> {item.fullName}         <span className={styles.user_pin}>PIN :{item.pinCode}</span>
+                  </div>
 
-          <div className={styles.username_mainwrap}>
-            <div className={styles.username_wrap}>
-              <div className={styles.radio_wrap}>
-                <input type="radio" value="Male" name="gender" /> Username         <span className={styles.user_pin}>PIN :555417</span>
+                  <p className={styles.details}>{item.street}, {item.city},India</p>
+                  <p className={styles.details}>{item.email}, {item.mobileNumber}</p>
+                </div>
+                <div>
+                  <button onClick={() => handleEditAddress(item)}>
+                    Edit
+                  </button>
+                  <button onClick={() => handleDeleteAddress(item)}>
+                    Delete
+                  </button>
+                </div>
+
               </div>
-
-              <p className={styles.details}>Chaitanya Bharathi Institute of Engineering, Chaitanya Bharati P.O Treasure Island Gokarting Track
-                Gandipet mandal, Telangana , India</p>
-            </div>
-            <div>
-
-            </div>
-
-            <input className={styles.checkbox_wrap} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-          </div>
+            )
+          })}
           <div className={styles.payment_method}>Payment Method</div>
 
 
@@ -124,19 +175,19 @@ export default function Home() {
             <input type="radio" value="Male" name="gender" /> UPI PAYMENT
           </div>
           <div className={styles.gpay_wrap}>
-          <img src='/Group 1000005668.png' className={styles.nav_icons2} />
+            <img src='/Group 1000005668.png' className={styles.nav_icons2} />
             <img src='/pngegg (6).png' className={styles.nav_icons2} />
             <img src='/payment 1.png' className={styles.nav_icons2} />
           </div>
           <p className={styles.need_help}>
-          Need help? Check our help page or contact us
-When your order is placed, we'll send you an e-mail message 
-acknowledging receipt of your order. If you choose to pay using 
-an electronic payment method (credit card, debit card or net banking), 
-you will be directed to your bank's website to complete your payment. 
-Your contract to purchase an item will not be complete until we receive 
-your electronic payment and dispatch your item . Need to add more items 
-to your order? Continue shopping on this website.
+            Need help? Check our help page or contact us
+            When your order is placed, we'll send you an e-mail message
+            acknowledging receipt of your order. If you choose to pay using
+            an electronic payment method (credit card, debit card or net banking),
+            you will be directed to your bank's website to complete your payment.
+            Your contract to purchase an item will not be complete until we receive
+            your electronic payment and dispatch your item . Need to add more items
+            to your order? Continue shopping on this website.
           </p>
         </div>
 
@@ -144,7 +195,7 @@ to your order? Continue shopping on this website.
 
         <div className={styles.checkout_right}>
 
-          
+
 
 
 
@@ -153,30 +204,30 @@ to your order? Continue shopping on this website.
 
           <div className={styles.address_wrapper}>
             <label className={styles.total_label1}>Product selected</label>
-            <label className={styles.total_price1}>₹ 500</label>
+            <label className={styles.total_price1}>₹ {price}</label>
           </div>
 
 
-  
+
 
           <div className={styles.address_wrapper}>
             <label className={styles.total_label1}>Quantity</label>
-            <label className={styles.total_price1}>3 items</label>
+            <label className={styles.total_price1}>{quantity} items</label>
           </div>
 
 
-          
+
           <div className={styles.address_wrapper}>
             <label className={styles.total_label1}>Delivery</label>
-            <label className={styles.total_price1}><span className={styles.yellow_label}>FREE</span> ₹40</label>
+            <label className={styles.total_price1}><span className={styles.yellow_label}>FREE</span></label>
           </div>
           <hr className={styles.line}></hr>
           <div className={styles.address_wrapper}>
             <label className={styles.total_label}>Total</label>
-            <label className={styles.total_price}>₹ 1500</label>
+            <label className={styles.total_price}>₹ {quantity * price}</label>
           </div>
 
-       
+
 
         </div>
 

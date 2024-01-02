@@ -12,14 +12,16 @@ import Router from "next/router";
 
 export default function Home() {
   const { rows: events } = useBackend("events/get-events", { sort: { sortOrder: "DESC", sortField: "id" } });
-  // Assuming 'events' is an array of event objects
-  const filteredEvents = events?.filter((event) => {
-    // Get the current date and time
-    const currentDate = new Date();
+// Assuming 'events' is an array of event objects
+const filteredEvents = events?.filter((event) => {
+  // Get the current date and time
+  const currentDate = new Date();
 
-    // Parse the endDate from the event
-    const endDate = new Date(event.endDate);
+  // Parse the endDate from the event
+  const endDate = new Date(event.endDate);
 
+  // Check if the endDate is in the future
+  if (endDate > currentDate) {
     // Calculate the difference in milliseconds between endDate and currentDate
     const timeDifference = endDate - currentDate;
 
@@ -28,10 +30,15 @@ export default function Home() {
 
     // Return true if the endDate is less than 48 hours from now
     return hoursDifference < 48;
-  });
+  }
 
-  // Now 'filteredEvents' contains only the events that meet the criteria
-  console.log(filteredEvents);
+  // Exclude events with expired endDate
+  return false;
+});
+
+// Now 'filteredEvents' contains only the events that meet the criteria and are not expired
+console.log(filteredEvents);
+
 
   let onViewDetailsClick = (e, id) => {
     Router.push(`/draw/${id}`);
@@ -191,7 +198,7 @@ export default function Home() {
                   </div>
                 </div>
 
-
+{/* 
                 <div className={styles.grid_box}>
                   <img src='/2.png' className={styles.grid_banner} />
 
@@ -224,10 +231,10 @@ export default function Home() {
                     <button className={styles.button_buynow}>Buy now</button>
 
                   </div>
-                </div>
+                </div> */}
 
 
-                <div className={styles.grid_box}>
+                {/* <div className={styles.grid_box}>
                   <img src='/3.png' className={styles.grid_banner} />
                   <div className={styles.flex_container3}>
                     <div>0</div>
@@ -258,14 +265,14 @@ export default function Home() {
                     <button className={styles.button_buynow}>Buy now</button>
 
                   </div>
-                </div>
+                </div> */}
 
               </div>
 
             </div>
 
 
-            <div className={styles.grid_style}>
+            {/* <div className={styles.grid_style}>
 
               <div className={styles.flex_container1}>
                 <div className={styles.grid_box}>
@@ -375,7 +382,7 @@ export default function Home() {
 
               </div>
 
-            </div>
+            </div> */}
           </Carousel>
         )
         })}

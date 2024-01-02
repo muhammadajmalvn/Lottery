@@ -26,62 +26,70 @@ export default function Home() {
       });
     }
   }, [eventId, productId]);
-  const handleCheckout = async (quantity, orderAmount, price,purchaseThreshold) => {
-    const couponNumber = Math.floor(orderAmount/purchaseThreshold);
-    const orderItems = []
-    const item = { quantity, productId, orderAmount, price }
-    orderItems.push(item)
-    const order=await createOrder({orderAmount,orderItems});
-
-    if (order) {
-      var options = {
-        key: "rzp_test_F6WOMA8GfzTV9U", // Enter the Key ID generated from the Dashboard
-        orderAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency:"INR",
-        name: "Lottery Tech Corp", //your business name
-        description: "Test Transaction",
-        image: "https://example.com/your_logo",
-        order_id: order[0].id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       
-        handler: async function (response) {
-
-          const { razorpay_payment_id: payment_id, razorpay_order_id: order_id, razorpay_signature: signature } = { ...response };
-
-          const validateRes = await verifyOrder({order_id,payment_id,signature})
-
-          if (validateRes[2].success==true) {
-            Router.push(`/congratulations_screen/${order[0].id}/${couponNumber}/${eventId}`)
-          }else{
-            alert('Payment verification failed')
-          }
-        },
-
-        prefill: {
-          //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-          name: "ABC", //your customer's name
-          email: "abc@example.com",
-          contact: "9000000000", //Provide the customer's phone number for better conversion rates
-        },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-      var rzp1 = new window.Razorpay(options);
-      rzp1.on("payment.failed", function (response) {
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-      });
-      rzp1.open();
-    }
+  const handleCheckout =(quantity, orderAmount, price,purchaseThreshold)=>{
+    Router.push({
+      pathname:'/checkout',
+      query:{
+        quantity, orderAmount, price,purchaseThreshold
+      }
+    })
   }
+  // const handleCheckout = async (quantity, orderAmount, price,purchaseThreshold) => {
+  //   const couponNumber = Math.floor(orderAmount/purchaseThreshold);
+  //   const orderItems = []
+  //   const item = { quantity, productId, orderAmount, price }
+  //   orderItems.push(item)
+  //   const order=await createOrder({orderAmount,orderItems});
+
+  //   if (order) {
+  //     var options = {
+  //       key: "rzp_test_F6WOMA8GfzTV9U", // Enter the Key ID generated from the Dashboard
+  //       orderAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  //       currency:"INR",
+  //       name: "Lottery Tech Corp", //your business name
+  //       description: "Test Transaction",
+  //       image: "https://example.com/your_logo",
+  //       order_id: order[0].id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+       
+  //       handler: async function (response) {
+
+  //         const { razorpay_payment_id: payment_id, razorpay_order_id: order_id, razorpay_signature: signature } = { ...response };
+
+  //         const validateRes = await verifyOrder({order_id,payment_id,signature})
+
+  //         if (validateRes[2].success==true) {
+  //           Router.push(`/congratulations_screen/${order[0].id}/${couponNumber}/${eventId}`)
+  //         }else{
+  //           alert('Payment verification failed')
+  //         }
+  //       },
+
+  //       prefill: {
+  //         //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+  //         name: "ABC", //your customer's name
+  //         email: "abc@example.com",
+  //         contact: "9000000000", //Provide the customer's phone number for better conversion rates
+  //       },
+  //       notes: {
+  //         address: "Razorpay Corporate Office",
+  //       },
+  //       theme: {
+  //         color: "#3399cc",
+  //       },
+  //     };
+  //     var rzp1 = new window.Razorpay(options);
+  //     rzp1.on("payment.failed", function (response) {
+  //       alert(response.error.code);
+  //       alert(response.error.description);
+  //       alert(response.error.source);
+  //       alert(response.error.step);
+  //       alert(response.error.reason);
+  //       alert(response.error.metadata.order_id);
+  //       alert(response.error.metadata.payment_id);
+  //     });
+  //     rzp1.open();
+  //   }
+  // }
   return (
     <div className={styles.container}>
       <Head>
