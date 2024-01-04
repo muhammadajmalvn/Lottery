@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
-import AddressModalPopup from "../pages/addressmodal";
+import AddressModalPopup from "../components/addressmodal";
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { useBackend } from '../hooks/useBackend';

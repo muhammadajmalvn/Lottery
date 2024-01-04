@@ -83,7 +83,7 @@ export default function AddressModalPopup(props) {
       <Button onClick={props.onHide} className={styles.header_close}>X</Button>
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h4 className={styles.header_title}>{props.addressDetails ? <>Edit</> : <>Add a New</>} <span className={styles.banner_title_pink}>Address</span></h4>
+          <h4 className={styles.header_title}>{props.addressDetails.id ? <>Edit</> : <>Add a New</>} <span className={styles.banner_title_pink}>Address</span></h4>
         </Modal.Title>
 
       </Modal.Header>
