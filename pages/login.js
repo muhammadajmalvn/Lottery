@@ -30,8 +30,9 @@ const[isLoading,setIsLoading] = useState();
        if(data?.accessToken){
         localStorage.setItem("user", JSON.stringify(data));
         setTimeout(() => {
-          // Router.push(sessionStorage.getItem("lastUrl"));
-          Router.push("/");
+          if (sessionStorage.getItem("lastUrl"))       
+            Router.push(sessionStorage.getItem("lastUrl"));
+          else Router.push("/");
         }, 1000);
        }else{
         setIsLoading(false);

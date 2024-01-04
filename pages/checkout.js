@@ -1,25 +1,95 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import React, { Component, useEffect } from 'react';
-
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
-import Table from 'react-bootstrap/Table';
-import Link from 'next/link';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import AddressModalPopup from "../components/addressmodal";
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { useBackend } from '../hooks/useBackend';
+import { userData } from "../libraries/auth/user";
 
 export default function Home() {
   const router = useRouter();
-  const { orderAmount, quantity, price, purchaseThreshold } = router.query;
   const [addressmodal, setAddressModalShow] = React.useState(false);
   const [addressData, setAddressData] = useState('')
+  let userDetails = userData();
+ 
   const { rows: address, update: updateAddress, delete: deleteAddress, setFilter } = useBackend("address", { sort: { sortOrder: "DESC", sortField: "id" }, deleteUrl: "address", updateUrl: "address" });
+  const { update: createOrder, setFilter: orderFilter } = useBackend("orders", {});
+  const { update: verifyOrder } = useBackend("payment/paymentverification", {});
+  
+  const [checkoutData, setCheckoutData] = useState({})
+  useEffect(() => {
+    if (!userDetails) {
+      sessionStorage.setItem("lastUrl", window.location.href)
+      window.location.href = "/login";
+    }
+    const checkoutData = JSON.parse(sessionStorage.getItem('checkoutData'))
+    setCheckoutData(checkoutData)
+  }, [])
+  
+  const {quantity, orderAmount,price, purchaseThreshold,productId,eventId} = checkoutData
 
-  console.log(address,'address');
+  const [selectedAddress, setSelectedAddress] = useState(null)
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
+  const handleCheckout = async (e) => {
+    e.preventDefault()
+    const couponNumber = Math.floor(orderAmount / purchaseThreshold);
+    const orderItems = []
+    const item = { quantity, productId, orderAmount, price }
+    orderItems.push(item)
+    const order = await createOrder({ orderAmount, orderItems });
+
+    if (order) {
+      var options = {
+        key: "rzp_test_F6WOMA8GfzTV9U", // Enter the Key ID generated from the Dashboard
+        orderAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: "Lottery Tech Corp", //your business name
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: order[0].id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+
+        handler: async function (response) {
+
+          const { razorpay_payment_id: payment_id, razorpay_order_id: order_id, razorpay_signature: signature } = { ...response };
+
+          const validateRes = await verifyOrder({ order_id, payment_id, signature })
+
+          if (validateRes[2].success == true) {
+            router.push(`/congratulations_screen/${order[0].id}/${couponNumber}/${eventId}`)
+          } else {
+            alert('Payment verification failed')
+          }
+        },
+
+        prefill: {
+          //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+          name: "ABC", //your customer's name
+          email: "abc@example.com",
+          contact: "9000000000", //Provide the customer's phone number for better conversion rates
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      rzp1.open();
+    }
+  }
+
   const handleAddressSubmit = async (addressData) => {
     await updateAddress(addressData)
   };
@@ -32,7 +102,7 @@ export default function Home() {
 
   const handleAddAddress = () => {
     setAddressData({
-      id:null,
+      id: null,
       fullName: "",
       email: "",
       city: "",
@@ -50,8 +120,8 @@ export default function Home() {
     setAddressModalShow(true);
   };
 
-  const handleDeleteAddress = async(item)=>{
-    console.log(item,'idddddddddddddd');
+  const handleDeleteAddress = async (item) => {
+    console.log(item, 'idddddddddddddd');
     await deleteAddress(item)
   }
   return (
@@ -124,52 +194,51 @@ export default function Home() {
               <div className={styles.add_wrap}>
                 Change
               </div>
-
-
             </div>
 
 
 
           </div>
+          <form onSubmit={handleCheckout}>
+            {address?.filter(item => !item.isDelete).map((item) => {
+              return (
+                <div className={styles.username_mainwrap}>
+                  <div className={styles.username_wrap}>
+                    <div className={styles.radio_wrap}>
+                      <input type='radio' name='address' onChange={() => setSelectedAddress(item.id)} /> {item.fullName}         <span className={styles.user_pin}>PIN :{item.pinCode}</span>
+                    </div>
 
-          {address?.filter(item => !item.isDelete).map((item) => {
-            return (
-              <div className={styles.username_mainwrap}>
-                <div className={styles.username_wrap}>
-                  <div className={styles.radio_wrap}>
-                    <input type='radio' name='address' /> {item.fullName}         <span className={styles.user_pin}>PIN :{item.pinCode}</span>
+                    <p className={styles.details}>{item.street}, {item.city},India</p>
+                    <p className={styles.details}>{item.email}, {item.mobileNumber}</p>
+                  </div>
+                  <div>
+                    <button onClick={() => handleEditAddress(item)}>
+                      Edit
+                    </button>
+                    <button onClick={() => handleDeleteAddress(item)}>
+                      Delete
+                    </button>
                   </div>
 
-                  <p className={styles.details}>{item.street}, {item.city},India</p>
-                  <p className={styles.details}>{item.email}, {item.mobileNumber}</p>
                 </div>
-                <div>
-                  <button onClick={() => handleEditAddress(item)}>
-                    Edit
-                  </button>
-                  <button onClick={() => handleDeleteAddress(item)}>
-                    Delete
-                  </button>
-                </div>
-
-              </div>
-            )
-          })}
-          <div className={styles.payment_method}>Payment Method</div>
+              )
+            })}
+            <div className={styles.payment_method}>Payment Method</div>
 
 
-          <div className={styles.radio_wrap}>
-            <input type="radio" value="Male" name="gender" /> Razorpay
-          </div>
+            <div className={styles.radio_wrap}>
+              <input type="radio" value="Razorpay" name="paymentMethod" onChange={() => setSelectedPaymentMethod("Razorpay")} /> Razorpay
+            </div>
 
-          <div className={styles.credit_card_wrap}>
-            <img src='/Razorpay_logo.webp' className={styles.nav_icons1} />
-            {/* <img src='/mastercard 1.png' className={styles.nav_icons1} />
+            <div className={styles.credit_card_wrap}>
+              <img src='/Razorpay_logo.webp' className={styles.nav_icons1} />
+              {/* <img src='/mastercard 1.png' className={styles.nav_icons1} />
             <img src='/payment 1.png' className={styles.nav_icons1} />
             <img src='/payment (1) 1.png' className={styles.nav_icons1} />
             <img src='/payment (2) 1.png' className={styles.nav_icons1} /> */}
-          </div>
-
+            </div>
+            <button type='submit'>Proceed to payment</button>
+          </form>
 
           {/* <div className={styles.radio_wrap}>
             <input type="radio" value="Male" name="gender" /> UPI PAYMENT
@@ -316,16 +385,6 @@ export default function Home() {
 
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
       <footer className={styles.footer_wrap}>
         <div className={styles.footer_left}>
           Lorem ipsum dolor sit amet,

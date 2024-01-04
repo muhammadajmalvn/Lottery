@@ -27,12 +27,15 @@ export default function Home() {
     }
   }, [eventId, productId]);
   const handleCheckout =(quantity, orderAmount, price,purchaseThreshold)=>{
-    Router.push({
-      pathname:'/checkout',
-      query:{
-        quantity, orderAmount, price,purchaseThreshold
-      }
-    })
+    sessionStorage.setItem('checkoutData', JSON.stringify({
+      quantity,
+      orderAmount,
+      price,
+      purchaseThreshold,
+      productId,
+      eventId
+    }));
+    Router.push('/checkout');
   }
   // const handleCheckout = async (quantity, orderAmount, price,purchaseThreshold) => {
   //   const couponNumber = Math.floor(orderAmount/purchaseThreshold);
