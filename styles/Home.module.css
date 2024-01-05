@@ -1560,11 +1560,12 @@
 
 .add_wrap {
   display: flex;
-  width: 46px;
+  width: 66px;
   height: 22px;
   padding: 12px 24px;
-
+  white-space: nowrap;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -1610,6 +1611,10 @@
 .username_mainwrap {
   display: flex;
   justify-content: space-between;
+  background: #363454;
+  padding: 10px;
+  width: 90%;
+  margin-bottom: 20px;
 }
 
 .checkbox_wrap {
@@ -1859,6 +1864,16 @@ cursor: pointer;
   justify-content: flex-end;
   font-size: 25px;
 }
+.edit_img{
+  width: 35px;
+  height: 35px;
+
+  cursor: pointer;
+}
+.edit_img :hover{
+  display: block;
+}
+
 
 @media (max-width: 600px) {
   .grid {

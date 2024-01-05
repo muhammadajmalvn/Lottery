@@ -67,12 +67,10 @@ export default function Home() {
 
 
             <div className={styles.add_wrap1}>
-              <div className={styles.add_wrap}>
-                Add +
-              </div>
+            
 
               <div className={styles.add_wrap}>
-                Change
+              Add New +
               </div>
 
 
@@ -96,7 +94,29 @@ export default function Home() {
 
             </div>
 
-            <input className={styles.checkbox_wrap} type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+            <div className='edit_delete_wrap'>
+              <img  className={styles.edit_img} src='/edit_icon.png'/>
+              <img className={styles.edit_img} src='/delete_icon.png'/>
+            </div>
+          </div>
+
+          <div className={styles.username_mainwrap}>
+            <div className={styles.username_wrap}>
+              <div className={styles.radio_wrap}>
+                <input type="radio" value="Male" name="gender" /> Username         <span className={styles.user_pin}>PIN :555417</span>
+              </div>
+
+              <p className={styles.details}>Chaitanya Bharathi Institute of Engineering, Chaitanya Bharati P.O Treasure Island Gokarting Track
+                Gandipet mandal, Telangana , India</p>
+            </div>
+            <div>
+
+            </div>
+
+            <div className='edit_delete_wrap'>
+              <img  className={styles.edit_img} src='/edit_icon.png'/>
+              <img className={styles.edit_img} src='/delete_icon.png'/>
+            </div>
           </div>
           <div className={styles.payment_method}>Payment Method</div>
 
