@@ -376,14 +376,14 @@
 .flex_container3>div {
   border-radius: 5px;
   background: #FF6F96;
-  width: 30px;
+  width: 60px;
   margin: 3px;
   text-align: center;
   line-height: 54px;
   font-family: Nunito;
-  font-size: 27px;
+  font-size: 54px;
   color: white;
-  height: 50px;
+  height: 87px;
   margin-top: 30px;
   display: flex;
   justify-content: center;
@@ -763,14 +763,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background: #171627;
+  background: #2e2d3d;
   width: 834px;
   height: 216px;
   flex-shrink: 0;
-  color: #FCC34A;
-  font-size: 42px;
+  color: #ffd200;
+  font-size: 102px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 900;
   line-height: normal;
   font-family: Nunito;
   margin-top: 50px;
@@ -980,7 +980,7 @@
   align-items: center;
   margin-top: 40px;
   background: #141227;
-  margin-top: 100px;
+
 
 }
 
@@ -1725,7 +1725,15 @@ height: 20px;
   font-weight: 400;
   line-height: normal;
 }
+.blink_me {
+  animation: blink 1s infinite;
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 .draw_title_layout1 {
   display: flex;
   justify-content: center;
@@ -1734,8 +1742,10 @@ height: 20px;
   align-items: center;
   margin-top: 40px;
   background: #141227;
-  height: 231px;
+  height: 300px;
   background: #171627;
+  align-items: center;
+
 
 }
 .label_pink{
@@ -1784,51 +1794,155 @@ line-height: 19px;
   text-align: left;
 }
 
-.calendar_wrap{
-  display: flex;
+.calendar_main_wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
+  height: auto;
+  background: #121022;
 }
-.calendar{
+
+.calendar_wrap {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calendar {
   width: 40%;
   display: flex;
   justify-content: center;
   margin-right: 50px;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 15px;
   background: rgba(70, 72, 110, 0.90);
-}
-.calendar_btn_wrap{
-  display: flex;
-  justify-content: center;
+  width: 473px;
+  height: 390px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #26253F;
+  flex-direction: column;
 }
 
-.react-calendar__tile .react-calendar__month-view__days__day .react-calendar__month-view__days__day--neighboringMonth{
-  background: white!important;
-    width: 30px!important;
-    height: 70px!important;
-    border-radius: 50%!important;
-}
-.calendar_btn{
+.circle1 {
   display: flex;
-width: 142px;
-height: 42px;
-padding: 12px 24px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-border-radius: 8px;
-background: #FF6F96;
-box-shadow: 0px 4px 16px 0px rgba(144, 39, 142, 0.15);
-color: var(--color-white, #FFF);
-font-family: Poppins;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-cursor: pointer;
+}
+
+.calendar_title_wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+
+}
+
+.calendar_label {
+  color: #FFF;
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.circle {
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #FFF;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px;
+}
+
+.clear_all_wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+
+.calendar_btn_wrap {
+  display: flex;
+  justify-content: center;
+  background: #121022;
+}
+
+.auto_select_btn {
+  display: flex;
+  width: auto;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: #000;
+  text-align: right;
+  font-family: Nunito;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 11px;
+
+  margin-right: 10px;
+  /* 125% */
+}
+
+.refresh {
+  width: 11px;
+  height: 11px;
+  margin-left: 10px;
+}
+
+.purple_bg {
+  width: 100%;
+  height: 312px;
+  flex-shrink: 0;
+  background: rgba(70, 72, 110, 0.90);
+}
+
+.clear_all_btn_wrap {
+  display: flex;
+}
+.clear_all_btn_wrap {
+  display: flex;
+}
+
+.react-calendar__tile .react-calendar__month-view__days__day .react-calendar__month-view__days__day--neighboringMonth {
+  background: white !important;
+  width: 30px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+}
+
+.calendar_btn {
+  display: flex;
+  width: 142px;
+  height: 42px;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FF6F96;
+  box-shadow: 0px 4px 16px 0px rgba(144, 39, 142, 0.15);
+  color: var(--color-white, #FFF);
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-bottom: 20px;
 }
 .ticket_label{
   color: white;

@@ -106,7 +106,7 @@ export default function Home() {
           to locate the most recent winners information
         </p>
 
-        <img src='/prize.png' className={styles.prize_img} />
+        <img src='/first_prize.gif' className={styles.prize_img} />
         <div className={styles.first_prize_number}>
           <label className={styles.first_prize_number_bubble}>18</label>
           <label className={styles.first_prize_number_bubble}>24</label>
